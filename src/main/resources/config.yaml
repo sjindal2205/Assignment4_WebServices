@@ -1,0 +1,11 @@
+http:
+ port: "8081"
+ 
+restconnection:
+ host: "customerapplicationproxy.us-e2.cloudhub.io"
+ port: "80"
+
+wsdl:
+ url: "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL"
+ service: "CountryInfoService"
+ port: "CountryInfoServiceSoap"

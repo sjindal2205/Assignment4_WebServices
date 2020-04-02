@@ -6,15 +6,7 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/wsc http://www.mulesoft.org/schema/mule/wsc/current/mule-wsc.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="08f97ec6-d90e-48c9-8b1d-cfcb6f546a67" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<wsc:config name="Web_Service_Consumer_Config" doc:name="Web Service Consumer Config" doc:id="57361448-ee28-45b2-90ea-3842946e7ab3" >
-		<wsc:connection wsdlLocation="CountriesCurrency.wsdl" service="CountryInfoService" port="CountryInfoServiceSoap" address="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso" />
-	</wsc:config>
-	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="1aa7cbf9-e561-44b1-9b82-384d99234903" >
-		<http:request-connection host="customerapplicationproxy.us-e2.cloudhub.io" port="80" />
-	</http:request-config>
+	
 	<flow name="Call_Customers_Mule_Application" doc:id="170e5249-9b66-4019-9e85-bbedc4552ffb" >
 		<http:listener doc:name="Listener" doc:id="44b38ceb-95ca-4c7d-bbee-f28ca673ac2a" config-ref="HTTP_Listener_config" path="/web/fetchCustomers" allowedMethods="GET"/>
 		<http:request method="GET" doc:name="Call GET /customer" doc:id="f42453dd-20b4-4d21-83ee-10ea20b55e7d" config-ref="HTTP_Request_configuration" path="/customer">
@@ -52,7 +44,7 @@ ns ns0 http://www.oorsprong.org/websamples.countryinfo
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<wsc:consume doc:name="Consume" doc:id="236f4473-760c-4177-a1d3-06e165fd9cdc" config-ref="Web_Service_Consumer_Config" operation="CapitalCity"/>
+		<wsc:consume doc:name="Consume" doc:id="629cf2a0-77dd-494a-a0a3-ecfeb2e675ce" config-ref="Web_Service_Consumer_Config" operation="CapitalCity"/>
 		<ee:transform doc:name="Transform Message" doc:id="695fa410-4cbf-44db-9b1c-d008fb6d4db5">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
